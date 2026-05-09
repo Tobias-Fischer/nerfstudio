@@ -1259,6 +1259,8 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/zlib-ng-2.3.3-hed4e4f5_1.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/zstd-1.5.7-hbf9d68e_6.conda
       - pypi: .
+      - pypi: https://files.pythonhosted.org/packages/3c/74/d02409ed2aa865e051b7edda22ad416a39d81a84980f544f8de717cab133/ninja-1.13.0-py3-none-macosx_10_9_universal2.whl
+      - pypi: https://files.pythonhosted.org/packages/aa/68/c5cbbdb86421a3f45ac0b52cf9860b1048d089335151d3f37c23aabcbef1/gsplat-1.5.3-py3-none-any.whl
 packages:
 - conda: https://conda.anaconda.org/conda-forge/linux-64/_openmp_mutex-4.5-7_kmp_llvm.conda
   build_number: 7
@@ -16366,6 +16368,7 @@ packages:
   - xatlas
   - trimesh>=3.20.2
   - timm==0.6.7
+  - gsplat>=1.4.0,<1.6.0
   - pytorch-msssim
   - pathos
   - packaging
@@ -16402,3 +16405,29 @@ packages:
   - sphinx-design==0.2.0 ; extra == 'docs'
   - sphinxext-opengraph==0.6.3 ; extra == 'docs'
   requires_python: '>=3.8.0'
+- pypi: https://files.pythonhosted.org/packages/3c/74/d02409ed2aa865e051b7edda22ad416a39d81a84980f544f8de717cab133/ninja-1.13.0-py3-none-macosx_10_9_universal2.whl
+  name: ninja
+  version: 1.13.0
+  sha256: fa2a8bfc62e31b08f83127d1613d10821775a0eb334197154c4d6067b7068ff1
+  requires_python: '>=3.8'
+- pypi: https://files.pythonhosted.org/packages/aa/68/c5cbbdb86421a3f45ac0b52cf9860b1048d089335151d3f37c23aabcbef1/gsplat-1.5.3-py3-none-any.whl
+  name: gsplat
+  version: 1.5.3
+  sha256: 515a3773641f5e7f7717acab6276c0b1d6dbcad087b7968ca653337c3189a982
+  requires_dist:
+  - ninja
+  - numpy
+  - jaxtyping
+  - rich>=12
+  - torch
+  - typing-extensions ; python_full_version < '3.8'
+  - black[jupyter]==22.3.0 ; extra == 'dev'
+  - isort==5.10.1 ; extra == 'dev'
+  - pylint==2.13.4 ; extra == 'dev'
+  - pytest==7.1.2 ; extra == 'dev'
+  - pytest-xdist==2.5.0 ; extra == 'dev'
+  - typeguard>=2.13.3 ; extra == 'dev'
+  - pyyaml==6.0 ; extra == 'dev'
+  - build ; extra == 'dev'
+  - twine ; extra == 'dev'
+  requires_python: '>=3.7'
