@@ -1,35 +1,103 @@
-[project]
+[workspace]
 name = "nerfstudio"
 description = "All-in-one repository for state-of-the-art NeRFs"
-channels = ["nvidia/label/cuda-11.8.0", "nvidia", "conda-forge", "pytorch"]
-platforms = ["linux-64"]
+channels = ["conda-forge"]
+platforms = ["linux-64", "osx-arm64"]
 
 [system-requirements]
 libc = { family="glibc", version="2.30" }
+cuda = "12.6"
 
 [tasks]
 # || operator in pixi allows running a command after only if the command before || fails
-tcnn-install = "python -c 'import tinycudann as tcnn' || python -m pip install ninja git+https://github.com/NVlabs/tiny-cuda-nn/#subdirectory=bindings/torch"
-make-third_party-dir = {cmd="ls third_party || mkdir third_party"}
-clone-hloc = {cmd="ls Hierarchical-Localization || git clone --recursive https://github.com/cvg/Hierarchical-Localization/", cwd = "third_party", depends-on=["make-third_party-dir"] }
-hloc-install = {cmd="python -m pip install -e .", cwd = "third_party/Hierarchical-Localization" , depends-on=["clone-hloc"], outputs=["third_party/Hierarchical-Localization/hloc.egg-info/PKG-INFO"]}
-post-install = {cmd="pwd", depends-on=["hloc-install", "tcnn-install"]}
+# tcnn-install = "python -c 'import tinycudann as tcnn' || python -m pip install ninja git+https://github.com/NVlabs/tiny-cuda-nn/#subdirectory=bindings/torch"
+# make-third_party-dir = {cmd="ls third_party || mkdir third_party"}
+# clone-hloc = {cmd="ls Hierarchical-Localization || git clone --recursive https://github.com/cvg/Hierarchical-Localization/", cwd = "third_party", depends-on=["make-third_party-dir"] }
+# hloc-install = {cmd="python -m pip install -e .", cwd = "third_party/Hierarchical-Localization" , depends-on=["clone-hloc"], outputs=["third_party/Hierarchical-Localization/hloc.egg-info/PKG-INFO"]}
+# post-install = {cmd="pwd", depends-on=["hloc-install", "tcnn-install"]}
 
 download-dozer-data = {cmd="ls data/nerfstudio/dozer || ns-download-data nerfstudio --capture-name dozer"}
 train-example-splat = {cmd="ns-train splatfacto --data data/nerfstudio/dozer/", depends-on=["post-install", "download-dozer-data"]}
 train-example-nerf = {cmd="ns-train nerfacto --data data/nerfstudio/dozer/", depends-on=["post-install", "download-dozer-data"]}
 
+[pypi-options]
+no-build-isolation = true
 
 [dependencies]
-python = ">=3.8,<3.11"
-pip = ">=24.0,<25"
-cuda = {version = "*", channel="nvidia/label/cuda-11.8.0"}
-pytorch-cuda = {version = "11.8.*", channel="pytorch"}
-pytorch = {version = ">=2.2.0,<2.3", channel="pytorch"}
-torchvision = {version = ">=0.17.0,<0.18", channel="pytorch"}
-pyarrow = ">=15.0.2,<15.1"
-colmap = ">=3.9.1,<3.10"
+ninja = "*"
+python = ">=3.10,<3.11"
+pip = "*"
+pytorch = "*"
+torchvision = "*"
+pyarrow = ">=15"
+colmap = ">=3.12,<3.13"
+hloc = "*"
+setuptools = "81.*"
+scikit-build-core = "*"
+cmake = "<4"
+cython = "*"
+pkg-config = "*"
+compilers = "*"
+matplotlib = "*"
+appdirs = ">=1.4"
+ffmpeg = "*"
+open3d = "*"
+av = ">=9.2.0"
+comet-ml = ">=3.33.8"
+configargparse = "*"
+cryptography = ">=38"
+gdown = ">=4.6.0"
+h5py = ">=2.9.0"
+imageio = ">=2.21.1"
+importlib-metadata = ">=6.0.0"
+ipywidgets = ">=7.6"
+jaxtyping = ">=0.2.15"
+jupyterlab = ">=3.3.4"
+mediapy = ">=1.1.0"
+msgpack-python = ">=1.0.4"
+msgpack-numpy = ">=0.4.8"
+nuscenes-devkit = ">=1.1.1"
+opencv = "*"
+Pillow = ">=10.3.0"
+plotly = ">=5.7.0"
+protobuf = "*"
+pymeshlab = ">=2022.2.post2"
+pyngrok = ">=5.1.0"
+python-socketio = ">=5.7.1"
+pytorch-msssim = "*"
+pyquaternion = ">=0.9.9"
+requests = "*"
+rich = ">=12.5.1"
+scikit-image = ">=0.19.3"
+splines = "0.3.0.*"
+tensorboard = ">=2.13.0"
+tensorly = "*"
+timm = "0.6.7.*"
+torchmetrics = ">=1.0.1"
+trimesh = ">=3.20.2"
+typing_extensions = ">=4.4.0"
+tyro = ">=0.9.8"
+viser = "1.0.0.*"
+wandb = ">=0.13.3"
+xatlas-python = "*"
+rawpy = ">=0.18.1"
+dill = "*"
+multiprocess = "*"
+pathos = "*"
+pox = "*"
+ppft = "*"
+addict = "*"
+pandas = "*"
+pytz = "*"
+fpsample = ">=1.0.2"
 
+[target.linux-64.dependencies]
+pytorch-gpu = "*"
+nerfacc = ">=0.5.2"
+gsplat = "*"
 
 [pypi-dependencies]
 nerfstudio = { path = ".", editable = true}
+
+# [target.linux-64.pypi-dependencies]
+# tiny-cuda-nn = { git = "https://github.com/NVlabs/tiny-cuda-nn.git", subdirectory = "bindings/torch" }

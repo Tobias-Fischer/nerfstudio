@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=61.0"]
+requires = ["setuptools>=61.0", "scikit-build-core>=0.8.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -20,7 +20,7 @@ dependencies = [
     "cryptography>=38",
     "tyro>=0.9.8",
     "gdown>=4.6.0",
-    "ninja>=1.10",
+    # "ninja>=1.10",
     "h5py>=2.9.0",
     "imageio>=2.21.1",
     'importlib-metadata>=6.0.0; python_version < "3.10"',
@@ -31,12 +31,12 @@ dependencies = [
     "mediapy>=1.1.0",
     "msgpack>=1.0.4",
     "msgpack_numpy>=0.4.8",
-    "nerfacc==0.5.2",
-    "open3d>=0.16.0",
-    "opencv-python-headless==4.10.0.84",
+    # "nerfacc==0.5.2",
+    # "open3d>=0.16.0",
+    "opencv-python-headless>=4.11",
     "Pillow>=10.3.0",
     "plotly>=5.7.0",
-    "protobuf<=5,!=3.20.0",
+    # "protobuf<=5,!=3.20.0",
     # TODO(1480) enable when pycolmap windows wheels are available
     # "pycolmap==0.3.0",
     # TODO(3461) and external issue cnr-isti-vclab/PyMeshLab/issues/398: Unrestrict Windows version when it isn't broken anymore.
@@ -47,8 +47,8 @@ dependencies = [
     "pyquaternion>=0.9.9",
     # TODO we can switch back to (non-new) rawpy if they start releasing arm64
     # wheels. https://github.com/letmaik/rawpy/issues/171#issuecomment-1572627747
-    "rawpy>=0.18.1; platform_machine != 'arm64'",
-    "newrawpy>=1.0.0b0; platform_machine == 'arm64'",
+    # "rawpy>=0.18.1; platform_machine != 'arm64'",
+    # "newrawpy>=1.0.0b0; platform_machine == 'arm64'",
     "requests",
     "rich>=12.5.1",
     "scikit-image>=0.19.3",
@@ -64,7 +64,7 @@ dependencies = [
     "xatlas",
     "trimesh>=3.20.2",
     "timm==0.6.7",
-    "gsplat==1.4.0",
+    # "gsplat>=1.4.0,<1.6.0",
     "pytorch-msssim",
     "pathos",
     "packaging",
