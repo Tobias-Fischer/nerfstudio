@@ -98,6 +98,7 @@ gsplat = "*"
 
 [pypi-dependencies]
 nerfstudio = { path = ".", editable = true}
+seathru-nerf = { git = "https://github.com/AkerBP/seathru_nerf.git" }
 
 # [target.linux-64.pypi-dependencies]
 # tiny-cuda-nn = { git = "https://github.com/NVlabs/tiny-cuda-nn.git", subdirectory = "bindings/torch" }
