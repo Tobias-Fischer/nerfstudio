@@ -19,6 +19,10 @@ cuda = "12.6"
 download-dozer-data = {cmd="ls data/nerfstudio/dozer || ns-download-data nerfstudio --capture-name dozer"}
 train-example-splat = {cmd="ns-train splatfacto --data data/nerfstudio/dozer/", depends-on=["post-install", "download-dozer-data"]}
 train-example-nerf = {cmd="ns-train nerfacto --data data/nerfstudio/dozer/", depends-on=["post-install", "download-dozer-data"]}
+train-splatfacto-colmap.cmd = "ns-train splatfacto {{ args }}"
+train-splatfacto-colmap.args = [
+  { "arg" = "args", "default" = "" },
+]
 
 [pypi-options]
 no-build-isolation = true
