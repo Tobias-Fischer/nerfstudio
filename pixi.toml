@@ -95,6 +95,8 @@ fpsample = ">=1.0.2"
 pytorch-gpu = "*"
 nerfacc = ">=0.5.2"
 gsplat = "*"
+cuda-driver-dev = ">=12.9.79,<13"
+cuda-cudart-dev = ">=12.9.79,<13"
 
 [pypi-dependencies]
 nerfstudio = { path = ".", editable = true}
