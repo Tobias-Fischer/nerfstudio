@@ -101,6 +101,7 @@ nerfacc = ">=0.5.2"
 gsplat = "*"
 cuda-driver-dev = ">=12.9.79,<13"
 cuda-cudart-dev = ">=12.9.79,<13"
+tiny-cuda-nn = "*"
 
 [pypi-dependencies]
 nerfstudio = { path = ".", editable = true}

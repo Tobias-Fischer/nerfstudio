@@ -388,6 +388,7 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/linux-64/svt-av1-4.0.1-hecca717_0.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/tbb-2023.0.0-h51de99f_1.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/tensorboard-data-server-0.7.0-py310hf0f1799_4.conda
+      - conda: https://conda.anaconda.org/conda-forge/linux-64/tiny-cuda-nn-1.7.0.dev0-py310h0c8da25_6.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/tinyobjloader-1.0.7-h54a6638_3.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/tk-8.6.13-noxft_h366c992_103.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/torchvision-0.24.0-cuda129_py310_h787aa55_2.conda
@@ -7215,6 +7216,25 @@ packages:
   - pkg:pypi/tensorboard-data-server?source=hash-mapping
   size: 3490698
   timestamp: 1764930051334
+- conda: https://conda.anaconda.org/conda-forge/linux-64/tiny-cuda-nn-1.7.0.dev0-py310h0c8da25_6.conda
+  sha256: 9f0e79c4f736067bc1de58ac15984c598ca2198528e9ca523bf2e980998f4510
+  md5: 00d9c1b001e09be19945af2b942d8121
+  depends:
+  - __glibc >=2.17,<3.0.a0
+  - cuda-cudart
+  - cuda-version >=12.9,<13
+  - libgcc >=14
+  - libstdcxx >=14
+  - libtorch >=2.8.0,<2.9.0a0
+  - python >=3.10,<3.11.0a0
+  - python_abi 3.10.* *_cp310
+  - pytorch >=2.8.0,<2.9.0a0
+  license: BSD-3-Clause
+  license_family: BSD
+  purls:
+  - pkg:pypi/tinycudann?source=hash-mapping
+  size: 92327956
+  timestamp: 1759393067612
 - conda: https://conda.anaconda.org/conda-forge/linux-64/tinyobjloader-1.0.7-h54a6638_3.conda
   sha256: a119eb5d14922060381a0c15996e1dbf86310cee10d2cce1a82db9c50eb97ca7
   md5: badf9075c031b69fed7d27532f51c7bc
